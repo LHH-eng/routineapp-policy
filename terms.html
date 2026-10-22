@@ -1,195 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>루틴정원 이용약관</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;600&display=swap">
-
 <style>
-  :root {
-    --bg: #FAFAF8;
-    --surface: #FFFFFF;
-    --border: #E8E6F0;
-    --accent: #6C63FF;
-    --accent-soft: #EEF2FF;
-    --text-primary: #1E1B4B;
-    --text-secondary: #64748B;
-    --text-body: #374151;
-    --nav-bg: #FFFFFF;
-    --tag-bg: #EEF2FF;
-    --tag-text: #6C63FF;
-  }
+  :root { --bg:#FAFAF8; --surface:#FFFFFF; --border:#E8E6F0; --accent:#6C63FF; --accent-soft:#EEF2FF; --text-primary:#1E1B4B; --text-secondary:#64748B; --text-body:#374151; --nav-bg:#FFFFFF; --tag-bg:#EEF2FF; --tag-text:#6C63FF; }
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0F0E1A;
-      --surface: #1A1830;
-      --border: #2D2A4A;
-      --accent: #8B85FF;
-      --accent-soft: #1E1B4B;
-      --text-primary: #EEF2FF;
-      --text-secondary: #94A3B8;
-      --text-body: #C7C8D8;
-      --nav-bg: #1A1830;
-      --tag-bg: #1E1B4B;
-      --tag-text: #A5A0FF;
-    }
+    :root:not([data-theme="light"]) { --bg:#0F0E1A; --surface:#1A1830; --border:#2D2A4A; --accent:#8B85FF; --accent-soft:#1E1B4B; --text-primary:#EEF2FF; --text-secondary:#94A3B8; --text-body:#C7C8D8; --nav-bg:#1A1830; --tag-bg:#1E1B4B; --tag-text:#A5A0FF; }
   }
-  :root[data-theme="dark"] {
-    --bg: #0F0E1A; --surface: #1A1830; --border: #2D2A4A;
-    --accent: #8B85FF; --accent-soft: #1E1B4B;
-    --text-primary: #EEF2FF; --text-secondary: #94A3B8; --text-body: #C7C8D8;
-    --nav-bg: #1A1830; --tag-bg: #1E1B4B; --tag-text: #A5A0FF;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text-body);
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 15px;
-    line-height: 1.8;
-  }
-  nav {
-    background: var(--nav-bg);
-    border-bottom: 1px solid var(--border);
-    padding: 0 24px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-  .nav-brand {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--accent);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .nav-badge {
-    font-size: 11px;
-    font-weight: 600;
-    background: var(--tag-bg);
-    color: var(--tag-text);
-    padding: 2px 8px;
-    border-radius: 20px;
-  }
-  .hero {
-    background: linear-gradient(135deg, var(--accent) 0%, #8B85FF 100%);
-    padding: 56px 24px 48px;
-    text-align: center;
-    color: #fff;
-  }
-  .hero-icon { font-size: 48px; margin-bottom: 16px; }
-  .hero h1 {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .hero p { font-size: 14px; opacity: 0.85; }
-  .hero-meta {
-    margin-top: 20px;
-    display: inline-flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .hero-meta span {
-    font-size: 12px;
-    background: rgba(255,255,255,0.2);
-    padding: 4px 14px;
-    border-radius: 20px;
-  }
-  .container {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-  }
-  .section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px 28px;
-    margin-bottom: 20px;
-  }
-  .section-title {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .section-title::before {
-    content: '';
-    width: 4px;
-    height: 18px;
-    background: var(--accent);
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
-  .section p {
-    color: var(--text-body);
-    margin-bottom: 10px;
-  }
-  .section p:last-child { margin-bottom: 0; }
-  ul.list {
-    list-style: none;
-    padding: 0;
-  }
-  ul.list li {
-    padding: 6px 0 6px 20px;
-    position: relative;
-    color: var(--text-body);
-  }
-  ul.list li::before {
-    content: '•';
-    position: absolute;
-    left: 6px;
-    color: var(--accent);
-    font-weight: bold;
-  }
-  .highlight {
-    background: var(--accent-soft);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 8px 8px 0;
-    padding: 14px 18px;
-    margin: 12px 0;
-    color: var(--text-primary);
-    font-size: 14px;
-  }
-  .contact-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-    text-align: center;
-  }
-  .contact-box h3 {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 17px;
-    color: var(--text-primary);
-    margin-bottom: 10px;
-  }
-  .contact-box a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-  }
-  .contact-box p { color: var(--text-secondary); font-size: 14px; margin-top: 6px; }
-  footer {
-    text-align: center;
-    padding: 32px 24px;
-    color: var(--text-secondary);
-    font-size: 13px;
-    border-top: 1px solid var(--border);
-  }
-  footer a { color: var(--accent); text-decoration: none; }
+  :root[data-theme="dark"] { --bg:#0F0E1A; --surface:#1A1830; --border:#2D2A4A; --accent:#8B85FF; --accent-soft:#1E1B4B; --text-primary:#EEF2FF; --text-secondary:#94A3B8; --text-body:#C7C8D8; --nav-bg:#1A1830; --tag-bg:#1E1B4B; --tag-text:#A5A0FF; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text-body); font-family:'Noto Sans KR',sans-serif; font-size:15px; line-height:1.8; }
+  nav { background:var(--nav-bg); border-bottom:1px solid var(--border); padding:0 24px; height:60px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:10; }
+  .nav-brand { font-family:'Noto Serif KR',serif; font-size:18px; font-weight:700; color:var(--accent); text-decoration:none; display:flex; align-items:center; gap:8px; }
+  .nav-badge { font-size:11px; font-weight:600; background:var(--tag-bg); color:var(--tag-text); padding:2px 8px; border-radius:20px; }
+  .hero { background:linear-gradient(135deg,var(--accent) 0%,#8B85FF 100%); padding:56px 24px 48px; text-align:center; color:#fff; }
+  .hero-icon { font-size:48px; margin-bottom:16px; }
+  .hero h1 { font-family:'Noto Serif KR',serif; font-size:28px; font-weight:700; margin-bottom:10px; }
+  .hero p { font-size:14px; opacity:.85; }
+  .hero-meta { margin-top:20px; display:inline-flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+  .hero-meta span { font-size:12px; background:rgba(255,255,255,.2); padding:4px 14px; border-radius:20px; }
+  .container { max-width:760px; margin:0 auto; padding:40px 24px 80px; }
+  .section { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:28px; margin-bottom:20px; }
+  .section-title { font-family:'Noto Serif KR',serif; font-size:17px; font-weight:700; color:var(--text-primary); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+  .section-title::before { content:''; width:4px; height:18px; background:var(--accent); border-radius:2px; flex-shrink:0; }
+  .section p { color:var(--text-body); margin-bottom:10px; }
+  .section p:last-child { margin-bottom:0; }
+  ul.list { list-style:none; padding:0; }
+  ul.list li { padding:6px 0 6px 20px; position:relative; color:var(--text-body); }
+  ul.list li::before { content:'•'; position:absolute; left:6px; color:var(--accent); font-weight:bold; }
+  .highlight { background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:14px 18px; margin:12px 0; color:var(--text-primary); font-size:14px; }
+  .contact-box { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:28px; text-align:center; }
+  .contact-box h3 { font-family:'Noto Serif KR',serif; font-size:17px; color:var(--text-primary); margin-bottom:10px; }
+  .contact-box a { color:var(--accent); text-decoration:none; font-weight:600; }
+  .contact-box p { color:var(--text-secondary); font-size:14px; margin-top:6px; }
+  footer { text-align:center; padding:32px 24px; color:var(--text-secondary); font-size:13px; border-top:1px solid var(--border); }
+  footer a { color:var(--accent); text-decoration:none; }
 </style>
-
+</head>
+<body>
 <nav>
   <a class="nav-brand" href="#">🌱 루틴정원</a>
   <span class="nav-badge">이용약관</span>
@@ -200,8 +51,8 @@
   <h1>이용약관</h1>
   <p>루틴정원 서비스 이용에 관한 약관입니다.</p>
   <div class="hero-meta">
-    <span>시행일: 2025년 1월 1일</span>
-    <span>최종 수정: 2025년 8월 1일</span>
+    <span>최초 시행일: 2025년 1월 1일</span>
+    <span>최종 수정: 2026년 10월 22일</span>
   </div>
 </div>
 
@@ -215,10 +66,12 @@
   <div class="section">
     <div class="section-title">제2조 정의</div>
     <ul class="list">
-      <li><strong>"서비스"</strong>란 루틴정원 앱을 통해 운영자가 제공하는 루틴 관리, 할 일 관리, 독서 기록, 감사 일기 등 일체의 기능을 의미합니다.</li>
+      <li><strong>"서비스"</strong>란 루틴정원 앱을 통해 운영자가 제공하는 루틴 관리, 할 일 관리, 독서 기록, 감사 일기, 정원(씨앗·땅), 패밀리 등 일체의 기능을 의미합니다.</li>
       <li><strong>"이용자"</strong>란 이 약관에 동의하고 서비스를 이용하는 회원 및 비회원을 의미합니다.</li>
       <li><strong>"회원"</strong>이란 이메일 또는 소셜 계정으로 회원가입 후 서비스를 이용하는 자를 의미합니다.</li>
       <li><strong>"비회원"</strong>이란 회원 가입 없이 서비스 일부 기능을 이용하는 자를 의미합니다.</li>
+      <li><strong>"패밀리"</strong>란 이용자들이 초대 코드로 모여 서로의 활동 현황을 확인하고 응원을 주고받는 모임을 의미합니다.</li>
+      <li><strong>"씨앗"</strong>이란 루틴 완료, 광고 시청, 패밀리 목표 달성 등으로 얻어 정원의 땅을 넓히는 데 쓰는 서비스 내 가상 포인트를 의미합니다.</li>
     </ul>
   </div>
 
@@ -245,11 +98,35 @@
       <li>서비스 운영을 방해하거나 시스템에 과부하를 주는 행위</li>
       <li>타인의 개인정보를 수집·저장·공개하는 행위</li>
       <li>서비스를 영리 목적으로 무단 이용하는 행위</li>
+      <li>프로그램·자동화 도구 등 비정상적인 방법으로 씨앗이나 보상을 얻는 행위</li>
     </ul>
   </div>
 
   <div class="section">
-    <div class="section-title">제6조 개인정보 보호</div>
+    <div class="section-title">제6조 패밀리 이용</div>
+    <p>패밀리에 가입하면 같은 패밀리 구성원에게 닉네임, 레벨, 땅 정보, 이번 주 넓힌 땅, 루틴 완료율이 보여집니다. 이용자는 이에 동의하는 경우에만 패밀리에 가입해야 하며, 언제든지 패밀리를 나갈 수 있습니다.</p>
+    <p>이용자는 닉네임과 응원 기능을 이용할 때 다른 구성원에게 불쾌감을 주거나 괴롭히는 행위, 부적절한 닉네임 사용을 해서는 안 됩니다.</p>
+    <p>패밀리를 만든 이용자는 구성원을 내보낼 수 있으며, 운영자는 약관을 위반한 이용자의 패밀리 이용을 제한할 수 있습니다.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">제7조 씨앗 및 보상</div>
+    <ul class="list">
+      <li>씨앗은 서비스 안에서만 쓸 수 있는 가상 포인트이며, 현금이나 다른 재화로 바꿀 수 없고 타인에게 양도할 수 없습니다.</li>
+      <li>씨앗의 획득 방법과 수량, 땅을 넓히는 데 드는 비용, 광고 시청 보상의 횟수와 수량은 운영 정책에 따라 바뀔 수 있습니다.</li>
+      <li>비정상적인 방법으로 얻은 씨앗이나 보상은 회수할 수 있습니다.</li>
+      <li>회원 탈퇴 또는 서비스 종료 시 보유한 씨앗과 땅은 소멸하며 복구할 수 없습니다.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">제8조 광고 및 푸시 알림</div>
+    <p>서비스에는 광고가 표시될 수 있으며, 이용자는 광고 시청을 통해 보상을 받을 수 있습니다. 광고 제공을 위해 광고 식별자가 사용될 수 있으며, 자세한 내용은 개인정보처리방침을 따릅니다.</p>
+    <p>서비스는 응원 도착 등을 알리는 푸시 알림을 보낼 수 있으며, 이용자는 기기의 알림 설정에서 언제든지 끌 수 있습니다.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">제9조 개인정보 보호</div>
     <p>운영자는 관련 법령에 따라 이용자의 개인정보를 보호합니다.</p>
     <p>개인정보 처리에 관한 상세 내용은 별도의 개인정보처리방침을 따릅니다.</p>
     <div class="highlight">
@@ -258,31 +135,32 @@
   </div>
 
   <div class="section">
-    <div class="section-title">제7조 서비스 변경 및 중단</div>
+    <div class="section-title">제10조 서비스 변경 및 중단</div>
     <p>운영자는 서비스의 전부 또는 일부를 변경하거나 중단할 수 있습니다.</p>
     <p>서비스 중단 시에는 앱 내 공지를 통해 사전에 안내하며, 불가피한 사정이 있는 경우 사후에 안내할 수 있습니다.</p>
     <p>운영자는 서비스 변경·중단으로 인한 손해에 대해 고의 또는 중과실이 없는 한 책임을 지지 않습니다.</p>
   </div>
 
   <div class="section">
-    <div class="section-title">제8조 면책 조항</div>
+    <div class="section-title">제11조 면책 조항</div>
     <ul class="list">
       <li>천재지변, 전쟁, 기간통신사업자의 서비스 중지 등 불가항력으로 인한 서비스 중단에 대해 책임지지 않습니다.</li>
       <li>이용자의 귀책사유로 발생한 서비스 이용 장애에 대해 책임지지 않습니다.</li>
       <li>이용자가 서비스 내 게시한 정보·자료·사실의 신뢰도, 정확성에 대해 책임지지 않습니다.</li>
       <li>비회원 이용자의 데이터 손실에 대해 책임지지 않습니다.</li>
+      <li>서비스에 표시되는 광고의 내용과 광고주가 제공하는 상품·서비스에 대해 책임지지 않습니다.</li>
     </ul>
   </div>
 
   <div class="section">
-    <div class="section-title">제9조 회원탈퇴 및 데이터 삭제</div>
+    <div class="section-title">제12조 회원탈퇴 및 데이터 삭제</div>
     <p>회원은 언제든지 앱 내 설정 화면에서 회원탈퇴를 신청할 수 있습니다.</p>
-    <p>탈퇴 즉시 모든 개인정보 및 서비스 이용 데이터는 완전히 삭제되며, 복구가 불가능합니다.</p>
+    <p>탈퇴 즉시 모든 개인정보 및 서비스 이용 데이터(정원, 씨앗, 패밀리 정보 포함)는 삭제되며, 복구가 불가능합니다.</p>
     <div class="highlight">탈퇴 전 필요한 데이터는 반드시 백업해 주시기 바랍니다.</div>
   </div>
 
   <div class="section">
-    <div class="section-title">제10조 준거법 및 관할</div>
+    <div class="section-title">제13조 준거법 및 관할</div>
     <p>이 약관은 대한민국 법률에 따라 규율됩니다.</p>
     <p>서비스 이용으로 발생한 분쟁에 대해서는 운영자의 주소지를 관할하는 법원을 전속 관할로 합니다.</p>
   </div>
@@ -296,6 +174,8 @@
 </div>
 
 <footer>
-  <p>© 2025 루틴정원 · 하지그루 &nbsp;|&nbsp; <a href="https://lhh-eng.github.io/routineapp-policy/">개인정보처리방침</a></p>
-  <p style="margin-top:6px;">이용약관 시행일: 2025년 1월 1일</p>
+  <p>© 2026 루틴정원 · 하지그루 &nbsp;|&nbsp; <a href="https://lhh-eng.github.io/routineapp-policy/">개인정보처리방침</a></p>
+  <p style="margin-top:6px;">이용약관 최초 시행일: 2025년 1월 1일 · 최종 수정: 2026년 10월 22일</p>
 </footer>
+</body>
+</html>
