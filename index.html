@@ -1,453 +1,175 @@
-<title>RoutineApp 개인정보처리방침</title>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>루틴정원 개인정보처리방침</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;600&display=swap">
-
 <style>
-  :root {
-    --bg: #FAFAF8;
-    --surface: #FFFFFF;
-    --border: #E8E6F0;
-    --accent: #6C63FF;
-    --accent-soft: #EEF2FF;
-    --text-primary: #1E1B4B;
-    --text-secondary: #64748B;
-    --text-body: #374151;
-    --nav-bg: #FFFFFF;
-    --tag-bg: #EEF2FF;
-    --tag-text: #6C63FF;
-  }
+  :root { --bg:#FAFAF8; --surface:#FFFFFF; --border:#E8E6F0; --accent:#6C63FF; --accent-soft:#EEF2FF; --text-primary:#1E1B4B; --text-secondary:#64748B; --text-body:#374151; --nav-bg:#FFFFFF; --tag-bg:#EEF2FF; --tag-text:#6C63FF; }
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0F0E1A;
-      --surface: #1A1830;
-      --border: #2D2A4A;
-      --accent: #8B85FF;
-      --accent-soft: #1E1B4B;
-      --text-primary: #EEF2FF;
-      --text-secondary: #94A3B8;
-      --text-body: #C7C8D8;
-      --nav-bg: #1A1830;
-      --tag-bg: #1E1B4B;
-      --tag-text: #A5A0FF;
-    }
+    :root:not([data-theme="light"]) { --bg:#0F0E1A; --surface:#1A1830; --border:#2D2A4A; --accent:#8B85FF; --accent-soft:#1E1B4B; --text-primary:#EEF2FF; --text-secondary:#94A3B8; --text-body:#C7C8D8; --nav-bg:#1A1830; --tag-bg:#1E1B4B; --tag-text:#A5A0FF; }
   }
-  :root[data-theme="dark"] {
-    --bg: #0F0E1A;
-    --surface: #1A1830;
-    --border: #2D2A4A;
-    --accent: #8B85FF;
-    --accent-soft: #1E1B4B;
-    --text-primary: #EEF2FF;
-    --text-secondary: #94A3B8;
-    --text-body: #C7C8D8;
-    --nav-bg: #1A1830;
-    --tag-bg: #1E1B4B;
-    --tag-text: #A5A0FF;
-  }
-
+  :root[data-theme="dark"] { --bg:#0F0E1A; --surface:#1A1830; --border:#2D2A4A; --accent:#8B85FF; --accent-soft:#1E1B4B; --text-primary:#EEF2FF; --text-secondary:#94A3B8; --text-body:#C7C8D8; --nav-bg:#1A1830; --tag-bg:#1E1B4B; --tag-text:#A5A0FF; }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: var(--bg);
-    color: var(--text-body);
-    line-height: 1.8;
-    font-size: 15px;
-  }
-
-  /* Header */
-  .site-header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .logo-mark {
-    width: 36px;
-    height: 36px;
-    background: var(--accent);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-  }
-  .logo-text {
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--text-primary);
-  }
-  .logo-text span {
-    color: var(--accent);
-  }
-
-  /* Layout */
-  .layout {
-    display: flex;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 48px 24px;
-    gap: 56px;
-    align-items: flex-start;
-  }
-
-  /* Sidebar nav */
-  .sidebar {
-    width: 220px;
-    flex-shrink: 0;
-    position: sticky;
-    top: 90px;
-  }
-  .sidebar-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-secondary);
-    margin-bottom: 14px;
-  }
-  .sidebar nav {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .sidebar a {
-    display: block;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 13.5px;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: background 0.15s, color 0.15s;
-    line-height: 1.5;
-  }
-  .sidebar a:hover {
-    background: var(--accent-soft);
-    color: var(--accent);
-  }
-  .sidebar a.active {
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-weight: 500;
-  }
-
-  /* Main content */
-  .main {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .page-eyebrow {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
-  .page-title {
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 700;
-    font-size: 32px;
-    color: var(--text-primary);
-    text-wrap: balance;
-    margin-bottom: 16px;
-    line-height: 1.4;
-  }
-  .page-meta {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-  }
-  .tag {
-    display: inline-block;
-    padding: 4px 12px;
-    background: var(--tag-bg);
-    color: var(--tag-text);
-    border-radius: 100px;
-    font-size: 12.5px;
-    font-weight: 500;
-  }
-
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 40px 0;
-  }
-
-  /* Sections */
-  .section {
-    margin-bottom: 48px;
-    scroll-margin-top: 100px;
-  }
-  .section-title {
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 600;
-    font-size: 20px;
-    color: var(--text-primary);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .section-title::before {
-    content: '';
-    display: block;
-    width: 4px;
-    height: 20px;
-    background: var(--accent);
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
-
-  p {
-    color: var(--text-body);
-    margin-bottom: 14px;
-    max-width: 68ch;
-  }
-  p:last-child { margin-bottom: 0; }
-
-  ul, ol {
-    padding-left: 20px;
-    margin-bottom: 14px;
-    max-width: 68ch;
-  }
-  li {
-    margin-bottom: 8px;
-    color: var(--text-body);
-  }
-
-  /* Info table */
-  .info-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 16px;
-    font-size: 14px;
-  }
-  .info-table th {
-    background: var(--accent-soft);
-    color: var(--text-primary);
-    font-weight: 600;
-    padding: 12px 16px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-  .info-table td {
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-    color: var(--text-body);
-    vertical-align: top;
-  }
-  .info-table tr:last-child td { border-bottom: none; }
-  .info-table tbody tr:hover { background: var(--accent-soft); }
-
-  /* Callout */
-  .callout {
-    background: var(--accent-soft);
-    border-left: 3px solid var(--accent);
-    padding: 16px 20px;
-    border-radius: 0 8px 8px 0;
-    margin-bottom: 16px;
-    max-width: 68ch;
-  }
-  .callout p { color: var(--text-primary); margin-bottom: 0; font-size: 14px; }
-
-  /* Contact card */
-  .contact-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    max-width: 440px;
-  }
-  .contact-card .contact-label {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-secondary);
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-  .contact-card .contact-value {
-    font-size: 15px;
-    color: var(--text-primary);
-    font-weight: 500;
-    margin-bottom: 0;
-  }
-  .contact-card .contact-value a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-  .contact-card .contact-value a:hover { text-decoration: underline; }
-
-  /* Footer */
-  .site-footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 40px;
-    text-align: center;
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .sidebar { display: none; }
-    .layout { padding: 32px 20px; }
-    .page-title { font-size: 24px; }
-    .site-header { padding: 16px 20px; }
-    .info-table { font-size: 13px; }
-    .info-table th, .info-table td { padding: 10px 12px; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
-  }
+  body { font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:var(--text-body); line-height:1.8; font-size:15px; }
+  .site-header { background:var(--surface); border-bottom:1px solid var(--border); padding:20px 40px; display:flex; align-items:center; gap:12px; position:sticky; top:0; z-index:100; }
+  .logo-mark { width:36px; height:36px; background:var(--accent); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; }
+  .logo-text { font-family:'Noto Serif KR',serif; font-weight:700; font-size:18px; color:var(--text-primary); }
+  .logo-text span { color:var(--accent); }
+  .layout { display:flex; max-width:1100px; margin:0 auto; padding:48px 24px; gap:56px; align-items:flex-start; }
+  .sidebar { width:220px; flex-shrink:0; position:sticky; top:90px; }
+  .sidebar-label { font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-secondary); margin-bottom:14px; }
+  .sidebar nav { display:flex; flex-direction:column; gap:2px; }
+  .sidebar a { display:block; padding:8px 12px; border-radius:8px; font-size:13.5px; color:var(--text-secondary); text-decoration:none; transition:background .15s,color .15s; line-height:1.5; }
+  .sidebar a:hover { background:var(--accent-soft); color:var(--accent); }
+  .sidebar a.active { background:var(--accent-soft); color:var(--accent); font-weight:500; }
+  .main { flex:1; min-width:0; }
+  .page-eyebrow { font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
+  .page-title { font-family:'Noto Serif KR',serif; font-weight:700; font-size:32px; color:var(--text-primary); text-wrap:balance; margin-bottom:16px; line-height:1.4; }
+  .page-meta { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:40px; }
+  .tag { display:inline-block; padding:4px 12px; background:var(--tag-bg); color:var(--tag-text); border-radius:100px; font-size:12.5px; font-weight:500; }
+  .divider { height:1px; background:var(--border); margin:40px 0; }
+  .section { margin-bottom:48px; scroll-margin-top:100px; }
+  .section-title { font-family:'Noto Serif KR',serif; font-weight:600; font-size:20px; color:var(--text-primary); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+  .section-title::before { content:''; display:block; width:4px; height:20px; background:var(--accent); border-radius:2px; flex-shrink:0; }
+  p { color:var(--text-body); margin-bottom:14px; max-width:68ch; }
+  p:last-child { margin-bottom:0; }
+  ul, ol { padding-left:20px; margin-bottom:14px; max-width:68ch; }
+  li { margin-bottom:8px; color:var(--text-body); }
+  .info-table { width:100%; border-collapse:collapse; margin-bottom:16px; font-size:14px; }
+  .info-table th { background:var(--accent-soft); color:var(--text-primary); font-weight:600; padding:12px 16px; text-align:left; border-bottom:1px solid var(--border); }
+  .info-table td { padding:12px 16px; border-bottom:1px solid var(--border); color:var(--text-body); vertical-align:top; }
+  .info-table tr:last-child td { border-bottom:none; }
+  .info-table tbody tr:hover { background:var(--accent-soft); }
+  .callout { background:var(--accent-soft); border-left:3px solid var(--accent); padding:16px 20px; border-radius:0 8px 8px 0; margin-bottom:16px; max-width:68ch; }
+  .callout p { color:var(--text-primary); margin-bottom:0; font-size:14px; }
+  .contact-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; max-width:440px; }
+  .contact-card .contact-label { font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-secondary); font-weight:600; margin-bottom:8px; }
+  .contact-card .contact-value { font-size:15px; color:var(--text-primary); font-weight:500; margin-bottom:0; }
+  .contact-card .contact-value a { color:var(--accent); text-decoration:none; }
+  .contact-card .contact-value a:hover { text-decoration:underline; }
+  .site-footer { border-top:1px solid var(--border); padding:32px 40px; text-align:center; font-size:13px; color:var(--text-secondary); }
+  @media (max-width:768px) { .sidebar{display:none;} .layout{padding:32px 20px;} .page-title{font-size:24px;} .site-header{padding:16px 20px;} .info-table{font-size:13px;} .info-table th,.info-table td{padding:10px 12px;} }
+  @media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
 </style>
-
+</head>
+<body>
 <header class="site-header">
   <div class="logo-mark">✦</div>
   <span class="logo-text">Routine<span>App</span></span>
 </header>
 
 <div class="layout">
-  <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-label">목차</div>
     <nav>
       <a href="#collect" class="active">1. 수집하는 정보</a>
       <a href="#purpose">2. 수집 목적</a>
       <a href="#retention">3. 보관 기간</a>
-      <a href="#third-party">4. 제3자 제공</a>
-      <a href="#rights">5. 이용자 권리</a>
-      <a href="#security">6. 보안</a>
-      <a href="#children">7. 아동 보호</a>
-      <a href="#changes">8. 방침 변경</a>
-      <a href="#contact">9. 문의</a>
+      <a href="#third-party">4. 제3자 제공 및 위탁</a>
+      <a href="#overseas">5. 국외 이전</a>
+      <a href="#ads-push">6. 광고 및 푸시 알림</a>
+      <a href="#rights">7. 이용자 권리</a>
+      <a href="#security">8. 보안</a>
+      <a href="#children">9. 아동 보호</a>
+      <a href="#changes">10. 방침 변경</a>
+      <a href="#contact">11. 문의</a>
     </nav>
   </aside>
 
-  <!-- Main -->
   <main class="main">
     <div class="page-eyebrow">개인정보처리방침</div>
-    <h1 class="page-title">RoutineApp은 개인정보를<br>소중히 다룹니다</h1>
+    <h1 class="page-title">루틴정원은 개인정보를<br>소중히 다룹니다</h1>
     <div class="page-meta">
-      <span class="tag">시행일: 2026년 1월 1일</span>
-      <span class="tag">최종 수정: 2026년 8월 29일</span>
+      <span class="tag">최초 시행일: 2026년 1월 1일</span>
+      <span class="tag">최종 수정: 2026년 10월 22일</span>
     </div>
 
-    <p>RoutineApp(이하 "서비스")은 이용자의 개인정보를 중요시하며, 「개인정보 보호법」 및 관련 법령을 준수합니다. 본 방침은 서비스가 수집하는 정보의 종류, 사용 방법, 보호 방법을 설명합니다.</p>
+    <p>루틴정원(이하 "서비스")은 이용자의 개인정보를 중요시하며, 「개인정보 보호법」 및 관련 법령을 준수합니다. 본 방침은 서비스가 수집하는 정보의 종류, 사용 방법, 보호 방법을 설명합니다.</p>
 
     <div class="divider"></div>
 
-    <!-- 1 -->
     <section class="section" id="collect">
       <h2 class="section-title">수집하는 개인정보</h2>
       <p>서비스는 다음 정보를 수집합니다.</p>
-
       <table class="info-table">
-        <thead>
-          <tr>
-            <th>구분</th>
-            <th>수집 항목</th>
-            <th>수집 방법</th>
-          </tr>
-        </thead>
+        <thead><tr><th>구분</th><th>수집 항목</th><th>수집 방법</th></tr></thead>
         <tbody>
-          <tr>
-            <td><strong>계정 정보</strong></td>
-            <td>이메일 주소, Google 계정 정보(Google 로그인 시)</td>
-            <td>회원가입, Google 소셜 로그인</td>
-          </tr>
-          <tr>
-            <td><strong>사용 데이터</strong></td>
-            <td>루틴 기록, 할일, 독서 기록, 감사일기, 문구노트, 통계 데이터</td>
-            <td>이용자가 앱 내에서 직접 입력</td>
-          </tr>
-          <tr>
-            <td><strong>앱 설정</strong></td>
-            <td>알림 설정, 테마, 잠금 설정(패턴 해시값)</td>
-            <td>앱 사용 과정에서 자동 생성</td>
-          </tr>
+          <tr><td><strong>계정 정보</strong></td><td>이메일 주소, Google 계정 정보(Google 로그인 시)</td><td>회원가입, Google 소셜 로그인</td></tr>
+          <tr><td><strong>사용 데이터</strong></td><td>루틴 기록, 할일, 독서 기록, 감사일기, 문구노트, 통계 데이터</td><td>이용자가 앱 내에서 직접 입력</td></tr>
+          <tr><td><strong>정원 정보</strong></td><td>닉네임, 캐릭터 레벨, 씨앗 획득·사용 내역, 보유 땅(칸) 정보와 확장 기록</td><td>앱 사용 과정에서 자동 생성, 닉네임은 이용자가 직접 입력</td></tr>
+          <tr><td><strong>패밀리 정보</strong></td><td>패밀리 가입·탈퇴 정보, 주간 땅 확장 현황, 루틴 완료율, 보내거나 받은 응원 기록</td><td>패밀리 기능 이용 과정에서 자동 생성</td></tr>
+          <tr><td><strong>푸시 알림 정보</strong></td><td>푸시 알림 토큰(기기를 구분하는 값), 기기 종류</td><td>알림 권한 허용 시 자동 생성</td></tr>
+          <tr><td><strong>광고 정보</strong></td><td>광고 식별자(광고 ID), 광고 시청 횟수</td><td>광고 이용 시 자동 생성</td></tr>
+          <tr><td><strong>앱 설정</strong></td><td>알림 설정, 테마, 잠금 설정(패턴 해시값)</td><td>앱 사용 과정에서 자동 생성</td></tr>
         </tbody>
       </table>
-
       <div class="callout">
         <p>패턴 잠금 비밀번호는 SHA-256 해시로 변환된 후 저장되며, 원본 패턴은 서버에 저장되지 않습니다.</p>
       </div>
+      <p>공휴일·기념일 표시를 위해 공공데이터포털의 공개 정보를 사용하며, 이 과정에서 이용자의 개인정보는 전송되지 않습니다.</p>
     </section>
 
-    <!-- 2 -->
     <section class="section" id="purpose">
       <h2 class="section-title">수집 목적</h2>
       <ul>
         <li>회원 인증 및 서비스 제공</li>
         <li>루틴, 할일, 독서 기록 등 이용자 데이터의 저장 및 동기화</li>
         <li>맞춤형 통계 및 성취 현황 제공</li>
+        <li>정원(씨앗·땅) 기능 및 패밀리 기능(순위, 목표, 응원) 제공</li>
+        <li>응원 도착 등 푸시 알림 발송</li>
+        <li>광고 제공 및 광고 시청 보상 지급, 부정 이용 방지</li>
         <li>앱 오류 수정 및 서비스 개선</li>
         <li>이용자 문의 응대</li>
       </ul>
       <p>수집된 정보는 위 목적 이외의 용도로 사용하지 않습니다.</p>
     </section>
 
-    <!-- 3 -->
     <section class="section" id="retention">
       <h2 class="section-title">보관 기간</h2>
       <table class="info-table">
-        <thead>
-          <tr>
-            <th>항목</th>
-            <th>보관 기간</th>
-          </tr>
-        </thead>
+        <thead><tr><th>항목</th><th>보관 기간</th></tr></thead>
         <tbody>
-          <tr>
-            <td>계정 정보 및 사용 데이터</td>
-            <td>회원 탈퇴 시까지</td>
-          </tr>
-          <tr>
-            <td>탈퇴 후 데이터</td>
-            <td>탈퇴 요청 즉시 삭제 (단, 법령에 따라 보존이 필요한 경우 해당 기간)</td>
-          </tr>
+          <tr><td>계정 정보 및 사용 데이터, 정원 정보</td><td>회원 탈퇴 시까지</td></tr>
+          <tr><td>패밀리 정보 및 응원 기록</td><td>패밀리를 나가거나 회원 탈퇴 시까지 (패밀리를 나가면 관련 응원 기록이 삭제됩니다)</td></tr>
+          <tr><td>푸시 알림 토큰</td><td>회원 탈퇴 또는 토큰 만료 시까지</td></tr>
+          <tr><td>탈퇴 후 데이터</td><td>탈퇴 요청 즉시 삭제 (단, 법령에 따라 보존이 필요한 경우 해당 기간)</td></tr>
         </tbody>
       </table>
       <p>이용자는 앱 설정 → 계정 → 회원 탈퇴를 통해 언제든지 탈퇴하고 데이터를 삭제할 수 있습니다.</p>
     </section>
 
-    <!-- 4 -->
     <section class="section" id="third-party">
       <h2 class="section-title">제3자 제공 및 위탁</h2>
-      <p>서비스는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 서비스 운영을 위해 아래 업체에 업무를 위탁합니다.</p>
+      <p>서비스는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만 아래의 경우는 예외입니다.</p>
+      <h3 style="font-size:16px;color:var(--text-primary);margin:20px 0 10px;">① 패밀리 안에서의 공개</h3>
+      <p>이용자가 패밀리에 가입하면, 같은 패밀리 구성원에게 다음 정보가 보여집니다: 닉네임, 캐릭터 레벨, 땅 정보(보유 칸 수), 이번 주 넓힌 땅, 루틴 완료율, 보낸 응원. 이 정보는 이용자가 가입한 패밀리 안에서만 공개되며, 패밀리를 나가면 더 이상 공개되지 않습니다. 루틴·할일·독서·감사일기 등의 상세 내용은 공개되지 않습니다.</p>
+      <h3 style="font-size:16px;color:var(--text-primary);margin:20px 0 10px;">② 업무 위탁 및 외부 서비스</h3>
       <table class="info-table">
-        <thead>
-          <tr>
-            <th>수탁 업체</th>
-            <th>위탁 내용</th>
-            <th>보관 기간</th>
-          </tr>
-        </thead>
+        <thead><tr><th>수탁 업체</th><th>위탁 내용</th><th>보관 기간</th></tr></thead>
         <tbody>
-          <tr>
-            <td>Supabase Inc.</td>
-            <td>데이터베이스 호스팅, 인증 서비스</td>
-            <td>위탁 계약 종료 시까지</td>
-          </tr>
-          <tr>
-            <td>Google LLC</td>
-            <td>소셜 로그인(Google OAuth), 앱 배포(Google Play)</td>
-            <td>Google 정책에 따름</td>
-          </tr>
+          <tr><td>Supabase Inc.</td><td>데이터베이스 호스팅, 인증 서비스</td><td>위탁 계약 종료 시까지</td></tr>
+          <tr><td>Google LLC</td><td>소셜 로그인(Google OAuth), 앱 배포(Google Play), 광고(Google AdMob), 푸시 알림 전송(Firebase Cloud Messaging)</td><td>Google 정책에 따름</td></tr>
+          <tr><td>Expo (650 Industries, Inc.)</td><td>푸시 알림 전송 중계(Expo Push Service)</td><td>알림 전송 처리 기간</td></tr>
         </tbody>
       </table>
       <p>각 수탁업체의 개인정보 보호 정책은 해당 업체 웹사이트에서 확인하실 수 있습니다.</p>
     </section>
 
-    <!-- 5 -->
+    <section class="section" id="overseas">
+      <h2 class="section-title">국외 이전</h2>
+      <p>서비스의 데이터는 Supabase 서버(대한민국 서울 리전)에 저장됩니다. 다만 푸시 알림 전송(Google, Expo)과 광고 제공(Google AdMob) 과정에서 푸시 알림 토큰, 광고 식별자 등 일부 정보가 해외 서버에서 처리될 수 있습니다. 이전되는 정보는 알림 전송과 광고 제공에 필요한 최소한의 정보이며, 이용자가 알림 권한을 끄거나 광고 ID를 초기화·제한하면 이전되지 않습니다.</p>
+    </section>
+
+    <section class="section" id="ads-push">
+      <h2 class="section-title">광고 및 푸시 알림</h2>
+      <ul>
+        <li><strong>광고:</strong> 서비스는 Google AdMob을 통해 광고를 표시하며, 광고 제공을 위해 광고 식별자가 사용될 수 있습니다. 기기의 설정(Google → 광고)에서 맞춤 광고를 끄거나 광고 ID를 삭제할 수 있습니다.</li>
+        <li><strong>푸시 알림:</strong> 응원 도착 등을 알리기 위해 푸시 알림을 보낼 수 있으며, 기기의 알림 설정에서 언제든지 끌 수 있습니다.</li>
+      </ul>
+    </section>
+
     <section class="section" id="rights">
       <h2 class="section-title">이용자의 권리</h2>
       <p>이용자는 언제든지 다음 권리를 행사할 수 있습니다.</p>
@@ -460,7 +182,6 @@
       <p>권리 행사는 앱 내 설정 메뉴 또는 아래 문의처를 통해 요청하실 수 있으며, 10일 이내에 처리됩니다.</p>
     </section>
 
-    <!-- 6 -->
     <section class="section" id="security">
       <h2 class="section-title">보안</h2>
       <p>서비스는 이용자의 개인정보를 안전하게 보호하기 위해 다음 조치를 취합니다.</p>
@@ -475,25 +196,22 @@
       </div>
     </section>
 
-    <!-- 7 -->
     <section class="section" id="children">
       <h2 class="section-title">아동 보호</h2>
       <p>서비스는 만 14세 미만 아동을 대상으로 하지 않으며, 만 14세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다. 만 14세 미만 아동의 정보가 수집된 것을 발견할 경우 즉시 삭제 조치합니다.</p>
     </section>
 
-    <!-- 8 -->
     <section class="section" id="changes">
       <h2 class="section-title">방침 변경</h2>
       <p>본 개인정보처리방침이 변경되는 경우, 시행 7일 전에 앱 내 공지사항을 통해 안내드립니다. 중요한 사항이 변경되는 경우 이메일로 별도 통지할 수 있습니다.</p>
     </section>
 
-    <!-- 9 -->
     <section class="section" id="contact">
       <h2 class="section-title">개인정보 보호 책임자 및 문의</h2>
       <p>개인정보 처리에 관한 문의, 불만 처리, 피해 구제 등에 관한 사항은 아래로 연락해주세요.</p>
       <div class="contact-card">
         <div class="contact-label">개인정보 보호 책임자</div>
-        <p class="contact-value">RoutineApp 운영팀</p>
+        <p class="contact-value">루틴정원 운영팀</p>
         <div style="height: 16px;"></div>
         <div class="contact-label">이메일</div>
         <p class="contact-value"><a href="mailto:hajigroo2119@gmail.com">hajigroo2119@gmail.com</a></p>
@@ -504,24 +222,22 @@
 </div>
 
 <footer class="site-footer">
-  <p>© 2026 RoutineApp · <a href="#" style="color: var(--accent); text-decoration: none;">개인정보처리방침</a></p>
+  <p>© 2026 루틴정원 · <a href="#" style="color: var(--accent); text-decoration: none;">개인정보처리방침</a></p>
 </footer>
 
 <script>
-  // Active sidebar link on scroll
   const sections = document.querySelectorAll('.section');
   const links = document.querySelectorAll('.sidebar a');
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         links.forEach(l => l.classList.remove('active'));
-        const id = entry.target.id;
-        const link = document.querySelector(`.sidebar a[href="#${id}"]`);
+        const link = document.querySelector(`.sidebar a[href="#${entry.target.id}"]`);
         if (link) link.classList.add('active');
       }
     });
   }, { rootMargin: '-30% 0px -60% 0px' });
-
   sections.forEach(s => observer.observe(s));
 </script>
+</body>
+</html>
