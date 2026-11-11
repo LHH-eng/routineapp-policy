@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>루틴가든 계정 및 데이터 삭제</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;600&display=swap">
+<style>
+  :root { --bg:#FAFAF8; --surface:#FFFFFF; --border:#E8E6F0; --accent:#6C63FF; --accent-soft:#EEF2FF; --text-primary:#1E1B4B; --text-secondary:#64748B; --text-body:#374151; --nav-bg:#FFFFFF; --tag-bg:#EEF2FF; --tag-text:#6C63FF; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#0F0E1A; --surface:#1A1830; --border:#2D2A4A; --accent:#8B85FF; --accent-soft:#1E1B4B; --text-primary:#EEF2FF; --text-secondary:#94A3B8; --text-body:#C7C8D8; --nav-bg:#1A1830; --tag-bg:#1E1B4B; --tag-text:#A5A0FF; }
+  }
+  :root[data-theme="dark"] { --bg:#0F0E1A; --surface:#1A1830; --border:#2D2A4A; --accent:#8B85FF; --accent-soft:#1E1B4B; --text-primary:#EEF2FF; --text-secondary:#94A3B8; --text-body:#C7C8D8; --nav-bg:#1A1830; --tag-bg:#1E1B4B; --tag-text:#A5A0FF; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:var(--text-body); line-height:1.8; font-size:15px; }
+  .site-header { background:var(--surface); border-bottom:1px solid var(--border); padding:20px 40px; display:flex; align-items:center; gap:12px; position:sticky; top:0; z-index:100; }
+  .logo-mark { width:36px; height:36px; background:var(--accent); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; }
+  .logo-text { font-family:'Noto Serif KR',serif; font-weight:700; font-size:18px; color:var(--text-primary); }
+  .logo-text span { color:var(--accent); }
+  .layout { display:flex; max-width:1100px; margin:0 auto; padding:48px 24px; gap:56px; align-items:flex-start; }
+  .sidebar { width:220px; flex-shrink:0; position:sticky; top:90px; }
+  .sidebar-label { font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-secondary); margin-bottom:14px; }
+  .sidebar nav { display:flex; flex-direction:column; gap:2px; }
+  .sidebar a { display:block; padding:8px 12px; border-radius:8px; font-size:13.5px; color:var(--text-secondary); text-decoration:none; transition:background .15s,color .15s; line-height:1.5; }
+  .sidebar a:hover { background:var(--accent-soft); color:var(--accent); }
+  .sidebar a.active { background:var(--accent-soft); color:var(--accent); font-weight:500; }
+  .main { flex:1; min-width:0; }
+  .page-eyebrow { font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
+  .page-title { font-family:'Noto Serif KR',serif; font-weight:700; font-size:32px; color:var(--text-primary); text-wrap:balance; margin-bottom:16px; line-height:1.4; }
+  .page-meta { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:40px; }
+  .tag { display:inline-block; padding:4px 12px; background:var(--tag-bg); color:var(--tag-text); border-radius:100px; font-size:12.5px; font-weight:500; }
+  .divider { height:1px; background:var(--border); margin:40px 0; }
+  .section { margin-bottom:48px; scroll-margin-top:100px; }
+  .section-title { font-family:'Noto Serif KR',serif; font-weight:600; font-size:20px; color:var(--text-primary); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+  .section-title::before { content:''; display:block; width:4px; height:20px; background:var(--accent); border-radius:2px; flex-shrink:0; }
+  p { color:var(--text-body); margin-bottom:14px; max-width:68ch; }
+  p:last-child { margin-bottom:0; }
+  ul, ol { padding-left:20px; margin-bottom:14px; max-width:68ch; }
+  li { margin-bottom:8px; color:var(--text-body); }
+  .info-table { width:100%; border-collapse:collapse; margin-bottom:16px; font-size:14px; }
+  .info-table th { background:var(--accent-soft); color:var(--text-primary); font-weight:600; padding:12px 16px; text-align:left; border-bottom:1px solid var(--border); }
+  .info-table td { padding:12px 16px; border-bottom:1px solid var(--border); color:var(--text-body); vertical-align:top; }
+  .info-table tr:last-child td { border-bottom:none; }
+  .info-table tbody tr:hover { background:var(--accent-soft); }
+  .table-wrap { width:100%; overflow-x:auto; margin-bottom:16px; }
+  .table-wrap .info-table { margin-bottom:0; min-width:640px; }
+  .callout { background:var(--accent-soft); border-left:3px solid var(--accent); padding:16px 20px; border-radius:0 8px 8px 0; margin-bottom:16px; max-width:68ch; }
+  .callout p { color:var(--text-primary); margin-bottom:0; font-size:14px; }
+  .contact-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; max-width:440px; }
+  .contact-card .contact-label { font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-secondary); font-weight:600; margin-bottom:8px; }
+  .contact-card .contact-value { font-size:15px; color:var(--text-primary); font-weight:500; margin-bottom:0; }
+  .contact-card .contact-value a { color:var(--accent); text-decoration:none; }
+  .contact-card .contact-value a:hover { text-decoration:underline; }
+  .site-footer { border-top:1px solid var(--border); padding:32px 40px; text-align:center; font-size:13px; color:var(--text-secondary); }
+  @media (max-width:768px) { .sidebar{display:none;} .layout{padding:32px 20px;} .page-title{font-size:24px;} .site-header{padding:16px 20px;} .info-table{font-size:13px;} .info-table th,.info-table td{padding:10px 12px;} }
+  @media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo-mark">✦</div>
+  <span class="logo-text">Routine<span>App</span></span>
+</header>
+
+<div class="layout">
+  <main class="main">
+    <div class="page-eyebrow">계정 및 데이터 삭제</div>
+    <h1 class="page-title">루틴가든 계정과 데이터를<br>삭제하는 방법</h1>
+    <div class="page-meta">
+      <span class="tag">앱 이름: 루틴가든 - 루틴·할 일·독서 기록</span>
+      <span class="tag">개발자: 루틴가든 운영팀 (하지그루)</span>
+    </div>
+
+    <p>루틴가든(이하 "서비스")은 이용자가 언제든지 계정과 데이터를 삭제할 수 있도록 아래 두 가지 방법을 제공합니다.</p>
+
+    <div class="divider"></div>
+
+    <section class="section" id="in-app">
+      <h2 class="section-title">방법 1. 앱에서 바로 삭제하기</h2>
+      <ol>
+        <li>루틴가든 앱을 엽니다.</li>
+        <li>아래 탭의 <strong>설정</strong>으로 이동합니다.</li>
+        <li><strong>계정 → 회원 탈퇴</strong>를 누릅니다.</li>
+        <li>안내에 따라 확인하면 계정과 데이터가 <strong>즉시</strong> 삭제됩니다.</li>
+      </ol>
+      <div class="callout">
+        <p>비회원(익명 계정)으로 이용 중이어도 같은 메뉴에서 계정과 데이터를 삭제할 수 있습니다.</p>
+      </div>
+    </section>
+
+    <section class="section" id="by-email">
+      <h2 class="section-title">방법 2. 이메일로 삭제 요청하기</h2>
+      <p>앱을 이미 지웠거나 앱에 접속할 수 없는 경우, 아래 이메일로 삭제를 요청할 수 있습니다.</p>
+      <div class="contact-card">
+        <div class="contact-label">삭제 요청 이메일</div>
+        <p class="contact-value"><a href="mailto:hajigroo2119@gmail.com?subject=%EB%A3%A8%ED%8B%B4%EA%B0%80%EB%93%A0%20%EA%B3%84%EC%A0%95%20%EC%82%AD%EC%A0%9C%20%EC%9A%94%EC%B2%AD">hajigroo2119@gmail.com</a></p>
+      </div>
+      <ul style="margin-top:16px;">
+        <li>제목: <strong>루틴가든 계정 삭제 요청</strong></li>
+        <li>내용: 루틴가든에 로그인할 때 사용한 <strong>Google 계정 이메일 주소</strong></li>
+        <li>본인 확인 후 <strong>10일 이내</strong>에 삭제하고 결과를 이메일로 알려 드립니다.</li>
+      </ul>
+      <p>비회원(익명 계정)은 이메일 정보가 없어 앱 밖에서는 본인 확인이 어렵습니다. 비회원은 방법 1(앱에서 삭제)을 이용해 주세요. 앱을 지워 다시 불러올 수 없는 익명 계정 데이터는 장기간 이용하지 않으면 정리됩니다.</p>
+    </section>
+
+    <section class="section" id="deleted">
+      <h2 class="section-title">삭제되는 데이터</h2>
+      <table class="info-table">
+        <thead><tr><th>구분</th><th>항목</th></tr></thead>
+        <tbody>
+          <tr><td>계정 정보</td><td>이메일 주소, Google 계정 정보, 익명 식별자</td></tr>
+          <tr><td>사용 데이터</td><td>루틴 기록, 할일, 독서 기록, 감사일기, 문구노트, 통계</td></tr>
+          <tr><td>독서 표지 사진</td><td>이용자가 올린 책 표지 사진</td></tr>
+          <tr><td>정원·패밀리 정보</td><td>닉네임, 캐릭터 레벨, 씨앗·땅, 패밀리 가입 정보, 응원 기록</td></tr>
+          <tr><td>앱 설정</td><td>알림 설정, 테마, 잠금 설정, 동의 기록</td></tr>
+          <tr><td>푸시 알림 정보</td><td>푸시 알림 토큰</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="retained">
+      <h2 class="section-title">삭제 후에도 일정 기간 남는 데이터</h2>
+      <table class="info-table">
+        <thead><tr><th>항목</th><th>보관 기간</th><th>이유</th></tr></thead>
+        <tbody>
+          <tr><td>앱 오류 정보 (Sentry)</td><td>수집 후 90일 이내 자동 삭제</td><td>앱 오류 분석. 계정과 연결된 개인 기록은 포함되지 않음</td></tr>
+          <tr><td>광고 식별자 관련 정보</td><td>Google 정책에 따름</td><td>광고 제공 (기기 설정에서 광고 ID 삭제 가능)</td></tr>
+          <tr><td>법령상 보관 의무가 있는 정보</td><td>해당 법령에서 정한 기간</td><td>관련 법령 준수</td></tr>
+        </tbody>
+      </table>
+      <p>삭제된 데이터는 복구할 수 없습니다. 자세한 내용은 <a href="./" style="color:var(--accent);">개인정보처리방침</a>을 확인해 주세요.</p>
+    </section>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <p>© 2026 루틴가든 · <a href="./" style="color: var(--accent); text-decoration: none;">개인정보처리방침</a> · <a href="terms.html" style="color: var(--accent); text-decoration: none;">이용약관</a></p>
+</footer>
+</body>
+</html>
